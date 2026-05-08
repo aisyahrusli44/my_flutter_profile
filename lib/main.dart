@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'My Profile',
       theme: ThemeData(
-        fontFamily: 'SF Pro Text',
+        fontFamily: 'Poppins',  
         useMaterial3: true,
       ),
       home: const ProfilePage(),
@@ -28,8 +28,9 @@ class ProfilePage extends StatelessWidget {
 
   // ================= LINKS =================
   final String email = "mailto:aisyahruslee44@gmail.com";
-  final String phone = "tel:+601165684644";
   final String instagram = "https://instagram.com/aisharusle3";
+  final String phone = "tel:+601165684644";
+ 
 
   // ================= OPEN LINK =================
   Future<void> launchURL(String url) async {
@@ -47,307 +48,319 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Color(0xFF0A0E27),  // Deep navy blue
-              Color(0xFF1A1F3E),  // Slate blue
-              Color(0xFF16213E),  // Dark blue
-            ],
-          ),
-        ),
-        child: SafeArea(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              children: [
-                // ================= PROFILE SECTION =================
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(32),
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
-                    child: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(24),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(32),
-                        color: Colors.white.withValues(alpha: 0.1),
-                        border: Border.all(
-                          color: Colors.white.withValues(alpha: 0.2),
-                          width: 1.5,
-                        ),
-                      ),
-                      child: Column(
-                        children: [
-                          // ================= CIRCLE AVATAR =================
-                          Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.cyan.withValues(alpha: 0.3),
-                                  blurRadius: 30,
-                                  spreadRadius: 5,
-                                ),
-                              ],
-                              border: Border.all(
-                                color: Colors.white.withValues(alpha: 0.3),
-                                width: 3,
-                              ),
-                            ),
-                            child: const CircleAvatar(
-                              radius: 65,
-                              backgroundImage: AssetImage("assets/images/profile2.png"),
-                            ),
-                          ),
-                          const SizedBox(height: 20),
-
-                          // Name
-                          ShaderMask(
-                            shaderCallback: (bounds) => const LinearGradient(
-                              colors: [Color(0xFF4facfe), Color(0xFF00f2fe)],
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                            ).createShader(bounds),
-                            child: const Text(
-                              "AISYAH RUSLI",
-                              style: TextStyle(
-                                fontSize: 28,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Courier',
-                                color: Colors.white,
-                                letterSpacing: 2,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-
-                          // Student Badge
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 16,
-                              vertical: 6,
-                            ),
-                            decoration: BoxDecoration(
-                              gradient: const LinearGradient(
-                                colors: [Color(0xFF4facfe), Color(0xFF00f2fe)],
-                              ),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: const Text(
-                              "🎓 SOFTWARE ENGINEERING STUDENT | UPSI",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 20),
-
-                          // ================= PERSONAL INFO =================
-                          Container(
-                            padding: const EdgeInsets.all(16),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.white.withValues(alpha: 0.05),
-                              border: Border.all(
-                                color: Colors.white.withValues(alpha: 0.1),
-                              ),
-                            ),
-                            child: Column(
-                              children: [
-                                const Row(
-                                  children: [
-                                    Icon(Icons.person, size: 18, color: Color(0xFF4facfe)),
-                                    SizedBox(width: 8),
-                                    Text(
-                                      "My Information",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 16),
-                                _infoRow(Icons.cake, "Full Name", "Siti Aisyah Binti Rusli"),
-                                _infoRow(Icons.cake, "Date of Birth", "16 March 2004"),
-                                _infoRow(Icons.location_on, "State", "Kelantan, Malaysia"),
-                                _infoRow(Icons.credit_card, "Student ID", "D20231106422"),
-                                _infoRow(Icons.school, "Faculty", "Faculty of Computing & Meta Technology"),
-                                _infoRow(Icons.today, "Semester", "Semester 6"),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-
-                // ================= QUOTE SLIDER =================
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(28),
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
-                    child: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(28),
-                        color: Colors.white.withValues(alpha: 0.08),
-                        border: Border.all(
-                          color: Colors.white.withValues(alpha: 0.15),
-                        ),
-                      ),
-                      child: const _QuoteSlider(),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-
-                // ================= SKILLS SECTION =================
-                _buildGlassCard(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Row(
-                        children: [
-                          Icon(Icons.code, color: Color(0xFF4facfe), size: 24),
-                          SizedBox(width: 8),
-                          Text(
-                            "Technical Skills",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 20),
-                      Wrap(
-                        spacing: 12,
-                        runSpacing: 12,
-                        children: [
-                          _skillChip("Flutter", Icons.mobile_friendly),
-                          _skillChip("Dart", Icons.code),
-                          _skillChip("UI/UX Design", Icons.design_services),
-                          _skillChip("Firebase", Icons.cloud_queue),
-                          _skillChip("Figma", Icons.brush),
-                          _skillChip("Git", Icons.merge_type),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 20),
-
-                // ================= INTERESTS SECTION =================
-                _buildGlassCard(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Row(
-                        children: [
-                          Icon(Icons.favorite, color: Color(0xFF4facfe), size: 24),
-                          SizedBox(width: 8),
-                          Text(
-                            "Interests",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 20),
-                      Wrap(
-                        spacing: 10,
-                        runSpacing: 10,
-                        children: [
-                          _interestChip("🎨 UI Design"),
-                          _interestChip("💻 Coding"),
-                          _interestChip("🎧 Music"),
-                          _interestChip("☕ Coffee"),
-                          _interestChip("📸 Photography"),
-                          _interestChip("✍️ Writing"),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 20),
-
-                // ================= CONTACT SECTION =================
-                _buildGlassCard(
-                  child: Column(
-                    children: [
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.contact_mail, color: Color(0xFF4facfe), size: 24),
-                          SizedBox(width: 8),
-                          Text(
-                            "Connect With Me",
-                            style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          _socialButton(
-                            icon: Icons.email,
-                            label: "Email",
-                            color: const Color(0xFF4facfe),
-                            onTap: () => launchURL(email),
-                          ),
-                          _socialButton(
-                            icon: Icons.phone,
-                            label: "Call",
-                            color: const Color(0xFF00f2fe),
-                            onTap: () => launchURL(phone),
-                          ),
-                           _socialButton(
-                            icon: Icons.camera_alt,
-                            label: "Instagram",
-                            color: const Color(0xFFE4405F),
-                            onTap: () => launchURL(instagram),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 20),
-
-                // Footer
-                const Text(
-                  "Created by Aisyah Rusli • Crafted with Flutter",
-                  style: TextStyle(
-                    color: Colors.white38,
-                    fontSize: 12,
-                  ),
-                ),
-                const SizedBox(height: 10),
-              ],
+      body: Stack(
+        children: [
+          // ================= BACKGROUND WALLPAPER =================
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/wallpaper1.png"),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-        ),
+          // Dark overlay 
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.black.withValues(alpha: 0.5),
+                  Colors.black.withValues(alpha: 0.7),
+                ],
+              ),
+            ),
+          ),
+          // ================= MAIN CONTENT =================
+          SafeArea(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  // ================= PROFILE SECTION =================
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(32),
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+                      child: Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(24),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(32),
+                          color: Colors.white.withValues(alpha: 0.1),
+                          border: Border.all(
+                            color: Colors.white.withValues(alpha: 0.2),
+                            width: 1.5,
+                          ),
+                        ),
+                        child: Column(
+                          children: [
+                            // ================= CIRCLE AVATAR =================
+                            Container(
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.cyan.withValues(alpha: 0.3),
+                                    blurRadius: 30,
+                                    spreadRadius: 5,
+                                  ),
+                                ],
+                                border: Border.all(
+                                  color: Colors.white.withValues(alpha: 0.3),
+                                  width: 3,
+                                ),
+                              ),
+                              child: const CircleAvatar(
+                                radius: 65,
+                                backgroundImage: AssetImage("assets/images/profile2.png"),
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+
+                            // Name
+                            ShaderMask(
+                              shaderCallback: (bounds) => const LinearGradient(
+                                colors: [Color(0xFF4facfe), Color(0xFF00f2fe)],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ).createShader(bounds),
+                              child: const Text(
+                                "AISYAH RUSLI",
+                                style: TextStyle(
+                                  fontSize: 32,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.white,
+                                  letterSpacing: 3,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+
+                            // Student Badge
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                                vertical: 6,
+                              ),
+                              decoration: BoxDecoration(
+                                gradient: const LinearGradient(
+                                  colors: [Color(0xFF4facfe), Color(0xFF00f2fe)],
+                                ),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: const Text(
+                                "🎓 SOFTWARE ENGINEERING STUDENT | UPSI",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+
+                            // ================= PERSONAL INFO =================
+                            Container(
+                              padding: const EdgeInsets.all(16),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Colors.white.withValues(alpha: 0.05),
+                                border: Border.all(
+                                  color: Colors.white.withValues(alpha: 0.1),
+                                ),
+                              ),
+                              child: Column(
+                                children: [
+                                  const Row(
+                                    children: [
+                                      Icon(Icons.person, size: 18, color: Color(0xFF4facfe)),
+                                      SizedBox(width: 8),
+                                      Text(
+                                        "My Information",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 16),
+                                  _infoRow(Icons.person, "Full Name", "Siti Aisyah Binti Rusli"),
+                                  _infoRow(Icons.cake, "Date of Birth", "16 March 2004"),
+                                  _infoRow(Icons.location_on, "State", "Kelantan, Malaysia"),
+                                  _infoRow(Icons.credit_card, "Student ID", "D20231106422"),
+                                  _infoRow(Icons.school, "Faculty", "Faculty of Computing & Meta Technology"),
+                                  _infoRow(Icons.today, "Semester", "Semester 6"),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+
+                  // ================= QUOTE SLIDER =================
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(28),
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+                      child: Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(28),
+                          color: Colors.white.withValues(alpha: 0.08),
+                          border: Border.all(
+                            color: Colors.white.withValues(alpha: 0.15),
+                          ),
+                        ),
+                        child: const _QuoteSlider(),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+
+                  // ================= SKILLS SECTION =================
+                  _buildGlassCard(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Row(
+                          children: [
+                            Icon(Icons.code, color: Color(0xFF06B6D4), size: 24),
+                            SizedBox(width: 8),
+                            Text(
+                              "Technical Skills",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 20),
+                        Wrap(
+                          spacing: 12,
+                          runSpacing: 12,
+                          children: [
+                            _skillChipCyan("Flutter", Icons.mobile_friendly),
+                            _skillChipCyan("Dart", Icons.code),
+                            _skillChipCyan("UI/UX Design", Icons.design_services),
+                            _skillChipCyan("Firebase", Icons.cloud_queue),
+                            _skillChipCyan("Figma", Icons.brush),
+                            _skillChipCyan("Git", Icons.merge_type),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+
+                  // ================= INTERESTS SECTION =================
+                  _buildGlassCard(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Row(
+                          children: [
+                            Icon(Icons.favorite, color: Color(0xFF3B82F6), size: 24),
+                            SizedBox(width: 8),
+                            Text(
+                              "Interests",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 20),
+                        Wrap(
+                          spacing: 10,
+                          runSpacing: 10,
+                          children: [
+                            _interestChipBlue("🎨 UI Design"),
+                            _interestChipBlue("💻 Coding"),
+                            _interestChipBlue("🎧 Music"),
+                            _interestChipBlue("☕ Coffee"),
+                            _interestChipBlue("📸 Photography"),
+                            _interestChipBlue("✍️ Writing"),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+
+                  // ================= CONTACT SECTION =================
+                  _buildGlassCard(
+                    child: Column(
+                      children: [
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.contact_mail, color: Color(0xFF4facfe), size: 24),
+                            SizedBox(width: 8),
+                            Text(
+                              "Connect With Me",
+                              style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            _socialButton(
+                              icon: Icons.email,
+                              label: "Email",
+                              color: const Color(0xFF4facfe),
+                              onTap: () => launchURL(email),
+                            ),
+                            _socialButton(
+                              icon: Icons.camera_alt,
+                              label: "Instagram",
+                              color: const Color(0xFFE4405F),
+                              onTap: () => launchURL(instagram),
+                            ),
+                            _socialButton(
+                              icon: Icons.phone,
+                              label: "Call",
+                              color: const Color(0xFF00f2fe),
+                              onTap: () => launchURL(phone),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+
+                  // Footer
+                  const Text(
+                    "Created by Aisyah Rusli • Crafted with Flutter",
+                    style: TextStyle(
+                      color: Colors.white38,
+                      fontSize: 12,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -384,7 +397,7 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  // Modern glass card
+  // ================= GLASS CARD =================
   Widget _buildGlassCard({required Widget child}) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(28),
@@ -407,19 +420,27 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  // Modern skill chip
-  Widget _skillChip(String label, IconData icon) {
+  // ================= SKILLS CHIP =================
+  Widget _skillChipCyan(String label, IconData icon) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: Colors.white.withValues(alpha: 0.1),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.15)),
+        gradient: const LinearGradient(
+          colors: [Color(0xFF0891B2), Color(0xFF06B6D4)],  
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFF06B6D4).withValues(alpha: 0.2),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 16, color: const Color(0xFF4facfe)),
+          Icon(icon, size: 16, color: Colors.white),
           const SizedBox(width: 8),
           Text(
             label,
@@ -434,18 +455,18 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  // Interest chip
-  Widget _interestChip(String text) {
+  // ================= INTERESTS CHIP =================
+  Widget _interestChipBlue(String text) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         gradient: const LinearGradient(
-          colors: [Color(0xFF4facfe), Color(0xFF00f2fe)],
+          colors: [Color(0xFF1E3A8A), Color(0xFF3B82F6)],  
         ),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF4facfe).withValues(alpha: 0.2),
+            color: const Color(0xFF3B82F6).withValues(alpha: 0.2),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -509,7 +530,7 @@ class ProfilePage extends StatelessWidget {
   }
 }
 
-// ================= MODERN QUOTE SLIDER =================
+// ================= QUOTE SLIDER =================
 class _QuoteSlider extends StatefulWidget {
   const _QuoteSlider();
 
